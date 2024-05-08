@@ -13,9 +13,22 @@
  */
 
 use Webman\Route;
+use WebmanTech\Swagger\Swagger;
 
+(new Swagger())->registerRoute([
+    'route_prefix' => '/api1/openapi',
+    'openapi_doc' => [
+        'scan_path' => app_path() . '/controller/api1',
+    ],
+    'register_webman_route' => true,
+]);
 
+(new Swagger())->registerRoute([
+    'route_prefix' => '/api2/my-doc',
+    'openapi_doc' => [
+        'scan_path' => app_path() . '/controller/api2',
+    ],
+    'register_webman_route' => true,
+]);
 
-
-
-
+Route::disableDefaultRoute();
