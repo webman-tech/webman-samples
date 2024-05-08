@@ -12,10 +12,10 @@
  * @license   http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-use Webman\Route;
+use app\middleware\SampleMiddleware2;
+use WebmanTech\Swagger\RouteAnnotation\DTO\RouteConfigDTO;
 
-
-
-
-
-
+// 注册全局的 callback 类型的路由，然后可以在 openapi 注解中使用
+RouteConfigDTO::registerNamedMiddleware('sample_middleware3', function() {
+    return new SampleMiddleware2('from named sample_middleware3');
+});
